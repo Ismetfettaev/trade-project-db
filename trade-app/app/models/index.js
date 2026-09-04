@@ -15,5 +15,6 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
+const GoodsGroup = require("./goods-group.model.js")(sequelize, Sequelize);
+db.goods_groups = GoodsGroup;
 module.exports = db;
