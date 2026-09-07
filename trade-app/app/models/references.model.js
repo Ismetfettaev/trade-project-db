@@ -10,3 +10,9 @@
    
    Equipment.hasMany(RentalEquipment, { foreignKey: 'equipmentId' });
    RentalEquipment.belongsTo(Equipment, { foreignKey: 'equipmentId' });
+      // Связи для rentalEquipment (связующая таблица)
+   Rental.hasMany(RentalEquipment, { foreignKey: 'rentalId', onDelete: 'CASCADE' });
+   RentalEquipment.belongsTo(Rental, { foreignKey: 'rentalId' });
+   
+   Equipment.hasMany(RentalEquipment, { foreignKey: 'equipmentId', onDelete: 'CASCADE' });
+   RentalEquipment.belongsTo(Equipment, { foreignKey: 'equipmentId' });
