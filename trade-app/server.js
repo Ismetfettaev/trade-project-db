@@ -24,6 +24,10 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to trade-app application." });
 });
 
+// === ДОБАВИТЬ ЭТУ СТРОКУ ===
+require("./app/routes/goodsgroup.routes")(app);
+// ===========================
+
 const PORT = process.env.NODE_DOCKER_PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
