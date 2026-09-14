@@ -1,27 +1,30 @@
-const { DataTypes } = require('sequelize');
-
-module.exports = (sequelize) => {
-  const Equipment = sequelize.define('Equipment', {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
-    },
-    name: {
-      type: DataTypes.STRING,
+module.exports = (sequelize, Sequelize) => {
+  const Equipment = sequelize.define("equipment", {
+    Name: {
+      type: Sequelize.STRING(50),
       allowNull: false
     },
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: true
+    SerialNumber: {
+      type: Sequelize.STRING(40),
+      allowNull: false,
+      unique: true
     },
-    equipmentType: {
-      type: DataTypes.STRING, // Например: "Земляные работы", "Подъемное оборудование"
+    YearOfManufacture: {
+      type: Sequelize.INTEGER,
+      allowNull: false
+    },
+    Producer: {
+      type: Sequelize.STRING(50),
+      allowNull: false
+    },
+    Status: {
+      type: Sequelize.STRING(50),
+      allowNull: false
+    },
+    Description: {
+      type: Sequelize.STRING(256),
       allowNull: true
     }
-  }, {
-    tableName: 'equipment',
-    timestamps: false
   });
 
   return Equipment;

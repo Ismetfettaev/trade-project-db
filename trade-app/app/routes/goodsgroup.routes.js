@@ -1,5 +1,6 @@
 module.exports = app => {
   const goodsgroups = require("../controllers/goodsgroup.controller.js");
+  const goodsController = require("../controllers/goods.controller");
 
   var router = require("express").Router();
 
@@ -8,6 +9,11 @@ module.exports = app => {
 
   // Получение всех записей
   router.get("/", goodsgroups.findAll);
+
+  // === ПЕРЕМЕСТИ СЮДА (ДО /:id) ===
+  // Пункт 3: Получить название категории товара
+  router.get("/:id/goodsgroupname", goodsController.getGoodsGroupName);
+  // =================================
 
   // Получение одной записи по id
   router.get("/:id", goodsgroups.findOne);
@@ -21,6 +27,6 @@ module.exports = app => {
   // Удаление всех записей
   router.delete("/", goodsgroups.deleteAll);
 
-  // Регистрируем маршрут с префиксом /api/goodsgroups
+  // Регистрируем маршрутизатор с префиксом /api/goodsgroups
   app.use("/api/goodsgroups", router);
 };

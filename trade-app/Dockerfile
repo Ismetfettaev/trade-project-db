@@ -1,6 +1,12 @@
-FROM node:18.18-alpine
-WORKDIR /trade-app
-COPY package.json .
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
 RUN npm install
+
 COPY . .
-CMD npm start
+
+EXPOSE 3000
+
+CMD ["node", "server.js"]
